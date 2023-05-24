@@ -38,13 +38,13 @@ class VecDB(VectorStore):
     @classmethod
     def from_texts(
         cls: Type[VecDB],
-        dataset_id: str,
+        collection_name: str,
         texts: List[str],
         embedding: Embeddings = None,
         metadatas: Optional[List[dict]] = None,
         **kwargs: Any,
-    ) -> VecDB:
-        store = cls(dataset_id)
+    ) -> Type[VecDB]:
+        store = cls(collection_name)
         store.add_texts(texts=texts, metadatas=metadatas, **kwargs)
         return store
 
